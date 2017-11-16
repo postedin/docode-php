@@ -26,6 +26,13 @@ class DocodeApi
         return new Profile($this->request('GET', 'profile'));
     }
 
+    public function getAnalyses(): array
+    {
+        return array_map(function ($data) {
+            return new Analysis($data);
+        }, $this->request('GET', 'analyses'));
+    }
+
     public function request($method, $path): array
     {
         $response = $this->client->request($method, $path);
