@@ -30,6 +30,17 @@ class DocodeApi
     {
         $response = $this->client->request($method, $path);
 
-        return json_decode($response->getBody(), true);
+        $responseJson = json_decode($response->getBody(), true);
+
+        $code = $response->getStatusCode();
+        if ($code >= 200 && $code < 300) {
+            return $responseJson;
+        }
+
+        if ($code == 403) {
+            throw new Exceptions\InvalidTokenException($responseJson['detail'], $response);
+        }
+
+        throw new Exceptions\ApiException($responseJson['detail'] ?? 'unkown error', $response);
     }
 }
