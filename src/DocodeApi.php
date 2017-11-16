@@ -33,6 +33,11 @@ class DocodeApi
         }, $this->request('GET', 'analyses'));
     }
 
+    public function getAnalysis($id): Analysis
+    {
+        return new Analysis($this->request('GET', 'analyses/' . $id));
+    }
+
     public function request($method, $path): array
     {
         $response = $this->client->request($method, $path);
@@ -46,6 +51,10 @@ class DocodeApi
 
         if ($code == 403) {
             throw new Exceptions\InvalidTokenException($responseJson['detail'], $response);
+        }
+
+        if ($code == 404) {
+            throw new Exceptions\NotFoundException($responseJson['detail'], $response);
         }
 
         throw new Exceptions\ApiException($responseJson['detail'] ?? 'unkown error', $response);
