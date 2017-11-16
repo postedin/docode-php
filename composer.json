@@ -4,30 +4,36 @@
   "keywords": [],
   "license": "MIT",
   "support": {
-      "issues": "https://github.com/postedin/docode-php/issues",
-      "source": "https://github.com/postedin/docode-php"
+    "issues": "https://github.com/postedin/docode-php/issues",
+    "source": "https://github.com/postedin/docode-php"
   },
   "authors": [
-      {
-          "name": "Postedin SpA",
-          "email": "contact@postedin.com"
-      }
+    {
+      "name": "Postedin SpA",
+      "email": "contact@postedin.com"
+    }
   ],
   "require": {
-      "php": ">=5.6.4",
-      "guzzlehttp/guzzle": "~6.3"
+    "php": ">=5.6.4",
+    "guzzlehttp/guzzle": "~6.3"
   },
   "require-dev": {
-      "mockery/mockery": "~1.0",
-      "phpunit/phpunit": "~6.4"
+    "mockery/mockery": "~1.0",
+    "phpunit/phpunit": "~6.4",
+    "illuminate/support": "~5.5"
   },
   "autoload": {
-      "psr-4": {
-          "Postedin\\Docode\\": "src/"
-      }
+    "psr-4": {
+      "Postedin\\Docode\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Postedin\\Docode\\Tests\\": "tests/"
+    }
   },
   "config": {
-      "sort-packages": true
+    "sort-packages": true
   },
   "prefer-stable": true
 }
