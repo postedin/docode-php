@@ -8,8 +8,10 @@ class Analysis
 
     private $params = [
         'id', 'user', 'repository', 'wordCount', 'suspect', 'suspectFilename',
-        'status', 'result', 'requestDate', 'responseDate', 'callbackUrl', 'publicUrl',
+        'status', 'requestDate', 'responseDate', 'callbackUrl', 'publicUrl',
     ];
+
+    private $result;
 
     private $api;
 
@@ -17,6 +19,8 @@ class Analysis
     {
         $this->api = $api;
         $this->data = $data;
+
+        $this->result = new Result($data['result']);
     }
 
     public function analyseWeb()
