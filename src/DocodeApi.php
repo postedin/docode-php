@@ -33,7 +33,7 @@ class DocodeApi
         }, $this->request('GET', 'analyses'));
     }
 
-    public function createAnalysis($filename, $content): Analysis
+    public function createAnalysis($filename, $content, $callbackUrl = false): Analysis
     {
         $multipart = [
             [
@@ -42,6 +42,13 @@ class DocodeApi
                 'filename' => $filename,
             ],
         ];
+
+        if ($callbackUrl) {
+            $multipart[] = [
+                'name' => 'callback_url',
+                'contents' => $callbackUrl,
+            ];
+        }
 
         return new Analysis($this, $this->request('POST', 'analyses', compact('multipart')));
     }
