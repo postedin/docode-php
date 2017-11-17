@@ -10,4 +10,17 @@ class Analysis
         'id', 'user', 'repository', 'wordCount', 'suspect', 'suspectFilename',
         'status', 'result', 'requestDate', 'responseDate', 'callbackUrl', 'publicUrl',
     ];
+
+    private $api;
+
+    public function __construct(DocodeApi $api, array $data)
+    {
+        $this->api = $api;
+        $this->data = $data;
+    }
+
+    public function analyzeWeb()
+    {
+        return $this->api->analyzeWeb($this->id);
+    }
 }

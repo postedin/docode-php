@@ -17,7 +17,7 @@ class DocodeApi
         $guzzleOptions = $options['guzzleOptions'] ?? [];
 
         $this->client = new Client(array_merge([
-            'base_uri' => 'http://docode.cl/app/api/',
+            'base_uri' => 'https://docode.cl/app/api/',
         ], $guzzleOptions));
     }
 
@@ -29,18 +29,45 @@ class DocodeApi
     public function getAnalyses(): array
     {
         return array_map(function ($data) {
-            return new Analysis($data);
+            return new Analysis($this, $data);
         }, $this->request('GET', 'analyses'));
+    }
+
+    public function createAnalysis($filename, $content): Analysis
+    {
+        $multipart = [
+            [
+                'name' => 'file',
+                'contents' => $content,
+                'filename' => $filename,
+            ],
+        ];
+
+        return new Analysis($this, $this->request('POST', 'analyses', compact('multipart')));
     }
 
     public function getAnalysis($id): Analysis
     {
-        return new Analysis($this->request('GET', 'analyses/' . $id));
+        return new Analysis($this, $this->request('GET', 'analyses/' . $id));
     }
 
-    public function request($method, $path): array
+    public function analyzeWeb($id): Analysis
     {
-        $response = $this->client->request($method, $path);
+        return new Analysis($this, $this->request('POST', 'analyses/' . $id));
+    }
+
+
+    public function request($method, $path, array $options = []): array
+    {
+        $options['headers'] = array_merge([
+            'Authorization' => 'Token ' . $this->token,
+        ], $options['headers'] ?? []);
+
+        try {
+            $response = $this->client->request($method, $path, $options);
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            $response = $e->getResponse();
+        }
 
         $responseJson = json_decode($response->getBody(), true);
 
@@ -55,6 +82,10 @@ class DocodeApi
 
         if ($code == 404) {
             throw new Exceptions\NotFoundException($responseJson['detail'], $response);
+        }
+
+        if ($code == 415) {
+            throw new Exceptions\UnsupportedMediaTypeException($responseJson['detail'], $response);
         }
 
         throw new Exceptions\ApiException($responseJson['detail'] ?? 'unkown error', $response);
