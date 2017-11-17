@@ -31,6 +31,11 @@ trait ImmutableData
         return camel_case($name);
     }
 
+    public function getRawData()
+    {
+        return $this->data;
+    }
+
     public function __get($property)
     {
         if ($property === 'params') {
