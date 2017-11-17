@@ -19,8 +19,8 @@ class Analysis
         $this->data = $data;
     }
 
-    public function analyzeWeb()
+    public function analyseWeb()
     {
-        return $this->api->analyzeWeb($this->id);
+        return $this->api->analyseWeb($this->id);
     }
 }

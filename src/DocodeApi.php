@@ -51,7 +51,7 @@ class DocodeApi
         return new Analysis($this, $this->request('GET', 'analyses/' . $id));
     }
 
-    public function analyzeWeb($id): Analysis
+    public function analyseWeb($id): Analysis
     {
         return new Analysis($this, $this->request('POST', 'analyses/' . $id));
     }
