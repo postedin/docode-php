@@ -38,6 +38,10 @@ trait ImmutableData
 
     public function __get($property)
     {
+        if (property_exists($this, $property)) {
+            return $this->$property;
+        }
+
         if ($property === 'params') {
             throw new LogicException('The class ' . static::class . ' must have the $params property set when using the ' . __TRAIT__ . ' trait');
         }

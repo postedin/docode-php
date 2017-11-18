@@ -10,9 +10,8 @@ class Source
         'suspectContainment',
     ];
 
-    public function __construct(DocodeApi $api, array $data)
+    public function __construct(array $data)
     {
-        $this->api = $api;
         $this->data = $data;
 
         $this->document = new Document($data['document']);

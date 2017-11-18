@@ -20,7 +20,9 @@ class Analysis
         $this->api = $api;
         $this->data = $data;
 
-        $this->result = new Result($data['result']);
+        if ($data['result']) {
+            $this->result = new Result($data['result']);
+        }
     }
 
     public function analyseWeb()
