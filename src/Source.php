@@ -7,7 +7,7 @@ class Source
     use ImmutableData;
 
     private $params = [
-        'suspectContainment',
+        'suspectContainment', 'url',
     ];
 
     public function __construct(array $data)
