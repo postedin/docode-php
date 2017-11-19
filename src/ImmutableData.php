@@ -47,7 +47,7 @@ trait ImmutableData
         }
 
         if (in_array($property, $this->params)) {
-            $value = $this->data[$this->propertyToData($property)] ?? null;
+            $value = $this->data[$this->propertyToData($property)] ?? ($this->data[$property] ?? null);
 
             if (is_array($value)) {
                 $obj = new \stdClass();
