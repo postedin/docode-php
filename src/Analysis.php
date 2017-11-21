@@ -7,7 +7,7 @@ class Analysis
     use ImmutableData;
 
     private $params = [
-        'id', 'user', 'repository', 'wordCount', 'suspect', 'suspectFilename',
+        'id', 'user', 'repository', 'wordCount', 'suspect', 'suspectFilename', 'coverage',
         'status', 'requestDate', 'responseDate', 'callbackUrl', 'publicUrl',
     ];
 
