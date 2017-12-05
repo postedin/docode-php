@@ -95,6 +95,10 @@ class DocodeApi
             throw new Exceptions\UnsupportedMediaTypeException($responseJson['detail'], $response);
         }
 
+        if (! empty($responseJson['error'])) {
+            throw new Exceptions\ApiException('unkown error: ' . $responseJson['error'], $response);
+        }
+
         throw new Exceptions\ApiException($responseJson['detail'] ?? 'unkown error', $response);
     }
 }
