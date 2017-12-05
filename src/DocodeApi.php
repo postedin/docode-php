@@ -99,6 +99,6 @@ class DocodeApi
             throw new Exceptions\ApiException('unkown error: ' . $responseJson['error'], $response);
         }
 
-        throw new Exceptions\ApiException($responseJson['detail'] ?? 'unkown error', $response);
+        throw new Exceptions\ApiException($responseJson['detail'] ?? 'unkown error: ' . $response->getBody(), $response);
     }
 }
