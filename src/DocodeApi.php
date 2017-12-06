@@ -84,15 +84,15 @@ class DocodeApi
         }
 
         if ($code == 403) {
-            throw new Exceptions\InvalidTokenException($responseJson['detail'], $response);
+            throw new Exceptions\InvalidTokenException($responseJson['detail'] ?? ($responseJson['error'] ?? 403), $response);
         }
 
         if ($code == 404) {
-            throw new Exceptions\NotFoundException($responseJson['detail'], $response);
+            throw new Exceptions\NotFoundException($responseJson['detail'] ?? ($responseJson['error'] ?? 404), $response);
         }
 
         if ($code == 415) {
-            throw new Exceptions\UnsupportedMediaTypeException($responseJson['detail'], $response);
+            throw new Exceptions\UnsupportedMediaTypeException($responseJson['detail'] ?? ($responseJson['error'] ?? 415), $response);
         }
 
         if (! empty($responseJson['error'])) {
