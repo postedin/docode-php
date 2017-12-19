@@ -8,4 +8,5 @@
 .travis.yml export-ignore
 phpunit.xml export-ignore
 .php_cs export-ignore
+CHANGELOG.md export-ignore
 examples/test-article.txt export-ignore
