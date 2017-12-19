@@ -15,8 +15,8 @@ trait ImmutableData
 
     protected function propertyToData($name): string
     {
-        if (ends_with($name, 'Count')) {
-            $name = 'n_' . substr($name, 0, -5) . 's';
+        if ($name == 'wordCount') {
+            return isset($this->data['n_words']) ? 'n_words' : 'nWords';
         }
 
         return snake_case($name);
@@ -24,8 +24,8 @@ trait ImmutableData
 
     protected function dataToProperty($name): string
     {
-        if (starts_with($name, 'n_')) {
-            $name = substr(2, trim($name, 's')) . '_count';
+        if ($name == 'n_words' || $name == 'nWords') {
+            return 'wordCount';
         }
 
         return camel_case($name);
@@ -49,7 +49,7 @@ trait ImmutableData
         if (in_array($property, $this->params)) {
             $value = $this->data[$this->propertyToData($property)] ?? ($this->data[$property] ?? null);
 
-            if (is_array($value)) {
+            if (is_array($value) && $this->isAssoc($value)) {
                 $obj = new \stdClass();
 
                 foreach ($value as $k => $v) {
@@ -63,5 +63,12 @@ trait ImmutableData
         }
 
         trigger_error('Undefined property: ' . static::class . '::$' . $property, E_USER_NOTICE);
+    }
+
+    private function isAssoc($array)
+    {
+        $keys = array_keys($array);
+
+        return array_keys($keys) !== $keys;
     }
 }

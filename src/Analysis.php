@@ -8,7 +8,7 @@ class Analysis
 
     private $params = [
         'id', 'user', 'repository', 'wordCount', 'suspect', 'suspectFilename', 'coverage',
-        'status', 'requestDate', 'responseDate', 'callbackUrl', 'publicUrl',
+        'status', 'requestDate', 'responseDate', 'callbackUrl', 'publicUrl', 'siteBlacklist',
     ];
 
     private $result;
