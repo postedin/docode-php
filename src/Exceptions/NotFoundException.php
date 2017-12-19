@@ -2,4 +2,6 @@
 
 namespace Postedin\Docode\Exceptions;
 
-class NotFoundException extends ApiException {}
+class NotFoundException extends ApiException
+{
+}

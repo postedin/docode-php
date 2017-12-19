@@ -2,4 +2,6 @@
 
 namespace Postedin\Docode\Exceptions;
 
-class InvalidTokenException extends ApiException {}
+class InvalidTokenException extends ApiException
+{
+}

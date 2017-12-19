@@ -2,4 +2,6 @@
 
 namespace Postedin\Docode\Exceptions;
 
-class UnsupportedMediaTypeException extends ApiException {}
+class UnsupportedMediaTypeException extends ApiException
+{
+}
