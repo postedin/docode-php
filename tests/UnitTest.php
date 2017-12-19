@@ -8,6 +8,7 @@ use Postedin\Docode\DocodeApi;
 use GuzzleHttp\Psr7;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Handler\MockHandler;
+use HJSON\HJSONParser;
 
 abstract class UnitTest extends TestCase
 {
@@ -39,5 +40,15 @@ abstract class UnitTest extends TestCase
         $headers = array_merge(['Content-Type' => 'application/json'], $headers);
 
         return new Psr7\Response($code, $headers, $body);
+    }
+
+    protected function parseHjsonFile($file): array
+    {
+        return json_decode(json_encode($this->parseHjson(file_get_contents($file))), true);
+    }
+
+    protected function parseHjson($hjson)
+    {
+        return (new HJSONParser())->parse($hjson);
     }
 }

@@ -9,17 +9,7 @@ class ProfileTest extends UnitTest
 {
     public function test_get_profile()
     {
-        $profileData = [
-            'words' => 234,
-            'files' => 65,
-            'phone' => '+56982410458',
-            'username' => 'Dragon',
-            'regime' => [
-                'words' => 1000,
-                'files' => 20,
-                'is_expired' => false,
-            ],
-        ];
+        $profileData = $this->parseHjsonFile(__DIR__.'/fake-api/profile.hjson');
 
         $api = $this->docodeApi($this->mockResponseHandler([
             $this->mockResponse(200, $profileData),
