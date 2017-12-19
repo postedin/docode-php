@@ -34,7 +34,11 @@ jobs:
             - ./vendor
           key: v1-dependencies-{{ checksum "composer.json" }}
 
-      - run: vendor/bin/phpunit
+      - run: vendor/bin/phpunit --coverage-html coverage
+      - store_artifacts:
+            path: coverage
+            destination: coverage
+
   code-style:
     docker:
       # specify the version you desire here
