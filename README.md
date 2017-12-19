@@ -1,6 +1,6 @@
 # Docode PHP
 
-This package consumes the https://docode.cl/ API.
+PHP library which consumes the https://docode.cl API
 
 [![Packagist](https://img.shields.io/packagist/v/postedin/docode-php.svg)]()
 [![Packagist](https://img.shields.io/packagist/l/postedin/docode-php.svg)]()

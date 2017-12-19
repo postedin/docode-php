@@ -1,7 +1,7 @@
 {
   "name": "postedin/docode-php",
-  "description": "",
-  "keywords": [],
+  "description": "Library which consumes the https://docode.cl API",
+  "keywords": ["docode", "api", "library"],
   "license": "MIT",
   "support": {
     "issues": "https://github.com/postedin/docode-php/issues",
@@ -14,7 +14,7 @@
     }
   ],
   "require": {
-    "php": ">=5.6.4",
+    "php": ">=7.0.18",
     "guzzlehttp/guzzle": "~6.3"
   },
   "require-dev": {
