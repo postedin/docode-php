@@ -1,6 +1,5 @@
 * text=auto
 
-/examples export-ignore
 /tests export-ignore
 /.circleci export-ignore
 .editorconfig export-ignore
@@ -9,3 +8,4 @@
 .travis.yml export-ignore
 phpunit.xml export-ignore
 .php_cs export-ignore
+examples/test-article.txt export-ignore

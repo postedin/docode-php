@@ -25,7 +25,7 @@ curl -X POST -H "Content-Type:application/json" https://docode.cl/app/api/token 
 Alternatively, we use https://insomnia.rest/ for testing the API and making manual requests.
 
 ## Basic Usage
-//as taken from the examples directory//
+*as taken from the examples directory*
 
 ```php
 <?php
@@ -41,9 +41,10 @@ $content = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac
 // returns an instance of Docode\Analysis
 $analysis = $api->createAnalysis('test-example.txt', $content, 'http://postedin.test/callback-url/')->analyseWeb();
 
-// At this point docode will be analysing your content and when done send results to your callback URL. You also have 
-// the data from the request as objects from this library. You can get the results manually by doing...
+// At this point docode will be analysing your content and when done send results to your callback URL. 
+// You also have the data from the request as objects from this library. 
 
+// You can get the results manually by doing...
 $newResponseAnalysis = $api->getAnalysis($analysis->id);
 
 // if docode is done this will contain the results, if any
