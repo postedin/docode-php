@@ -50,6 +50,7 @@ jobs:
     steps:
       - checkout
       - run: sudo composer self-update
+      - run: sudo rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
       # Download and cache dependencies
       - restore_cache:
