@@ -34,12 +34,14 @@ class DocodeApi
 
         $query = '';
         if (! empty($options['excludeFields'])) {
-            $query .= 'fields!=' . implode(',', $options['excludeFields']);
+            $query .= '&fields!=' . implode(',', $options['excludeFields']);
         }
 
         if (! empty($options['fields'])) {
-            $query .= 'fields=' . implode(',', $options['fields']);
+            $query .= '&fields=' . implode(',', $options['fields']);
         }
+
+        $query = trim($query, '&');
 
         return array_map(function ($data) {
             return new Analysis($this, $data);

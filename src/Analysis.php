@@ -20,7 +20,7 @@ class Analysis
         $this->api = $api;
         $this->data = $data;
 
-        if ($data['result']) {
+        if (! empty($data['result'])) {
             $this->result = new Result($data['result']);
         }
     }
