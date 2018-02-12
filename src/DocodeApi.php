@@ -26,11 +26,24 @@ class DocodeApi
         return new Profile($this->request('GET', 'profile'));
     }
 
-    public function getAnalyses(): array
+    public function getAnalyses(array $options = []): array
     {
+        if (empty($options['excludeFields'])) {
+            $options['excludeFields'] = ['result'];
+        }
+
+        $query = '';
+        if (! empty($options['excludeFields'])) {
+            $query .= 'fields!=' . implode(',', $options['excludeFields']);
+        }
+
+        if (! empty($options['fields'])) {
+            $query .= 'fields=' . implode(',', $options['fields']);
+        }
+
         return array_map(function ($data) {
             return new Analysis($this, $data);
-        }, $this->request('GET', 'analyses'));
+        }, $this->request('GET', 'analyses', compact('query')));
     }
 
     public function createAnalysis($filename, $content, $callbackUrl = false): Analysis
