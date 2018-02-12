@@ -25,8 +25,8 @@ class ProfileTest extends UnitTest
             }
         }
 
-        $this->assertEquals($profileData['regime']['words'], $profile->regime->words);
-        $this->assertEquals($profileData['regime']['files'], $profile->regime->files);
-        $this->assertEquals($profileData['regime']['is_expired'], $profile->regime->isExpired);
+        foreach ($profileData['regime'] as $param => $value) {
+            $this->assertEquals($value, $profile->plan->{camel_case($param)});
+        }
     }
 }

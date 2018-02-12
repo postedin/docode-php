@@ -1,11 +1,14 @@
 {
-  words: 234,
-  files: 65,
-  phone: +56982410458,
-  username: Dragon
-  regime: {
-    words: 1000,
-    files: 20,
-    is_expired: false,
+  "phone": +569458,
+  "web_words": 96456,
+  "repo_words": 674760,
+  "files": 998486,
+  "regime": {
+    "web_words": 1000000,
+    "repo_words": 1000000,
+    "files": 1000000,
+    "is_expired": false
   },
+  "username": "postedin",
+  "site_blacklist": [],
 }
