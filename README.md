@@ -1,6 +1,6 @@
 # Docode PHP
 
-PHP library which consumes the https://docode.cl API
+PHP library which consumes the <https://docode.cl> API
 
 [![Packagist](https://img.shields.io/packagist/php-v/postedin/docode-php.svg)](https://packagist.org/packages/postedin/docode-php)
 [![Packagist](https://img.shields.io/packagist/l/postedin/docode-php.svg)](https://packagist.org/packages/postedin/docode-php)
@@ -8,8 +8,9 @@ PHP library which consumes the https://docode.cl API
 
 ## Installation
 
-https://packagist.org/packages/postedin/docode-php
-```
+<https://packagist.org/packages/postedin/docode-php>
+
+```bash
 composer require postedin/docode-php
 ```
 
@@ -19,13 +20,15 @@ You need to get your token manually. We don't support getting the token in this 
 To get your token make a manual request to the Docode API with that information.
 
 You can do this with `curl` in a terminal:
+
 ```bash
 curl -X POST -H "Content-Type:application/json" https://docode.cl/app/api/token -d '{"username": "YOUR USERNAME HERE", "password": "YOUR_PASSWORD_HERE"}'
 ```
 
-Alternatively, we use https://insomnia.rest/ for testing the API and making manual requests.
+Alternatively, we use <https://insomnia.rest/> for testing the API and making manual requests.
 
 ## Basic Usage
+
 *as taken from the examples directory*
 
 ```php
